@@ -1,0 +1,14 @@
+cmake_minimum_required(VERSION 3.11)
+project(leetcode)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(p1 p1.cpp)
+add_executable(p2 p2.cpp)
+add_executable(p3 p3.cpp)
+add_executable(p4 p4.cpp)
+add_executable(p5 p5.cpp)
+add_executable(p771 p771.cpp)
+add_executable(p709 p709.cpp)
+add_executable(p929 p929.cpp)
