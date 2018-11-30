@@ -2,6 +2,7 @@
 #include <string>
 #include <algorithm>
 #include <assert.h>
+#include <cctype>
 
 class Solution {
 public:

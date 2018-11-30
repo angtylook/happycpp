@@ -1,6 +1,7 @@
 #include <iostream>
 #include <set>
 #include <vector>
+#include <algorithm>
 
 class Solution {
  public:
@@ -24,7 +25,7 @@ class Solution {
   }
 };
 
-int main(int argc, const char* argv[])
+int main()
 {
   std::vector<std::string> emails{"test.email+alex@leetcode.com",
                                   "test.e.mail+bob.cathy@leetcode.com",
