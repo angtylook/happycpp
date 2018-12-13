@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <iterator>
 #include <queue>
@@ -20,7 +21,7 @@ public:
 
 class Solution {
 public:
-    std::vector<int> preorder(Node* root) {
+    std::vector<int> postorder(Node* root) {
         std::vector<int> result;
         if (root == nullptr) {
             return result;
@@ -29,15 +30,18 @@ public:
         std::stack<Node*> s;
         s.push(root);
         Node* cur{nullptr};
+        Node* last{nullptr};
         while (!s.empty()) {
             cur = s.top();
-            if (cur->children.empty()) {
+            if (cur->children.empty() || cur->children.back() == last) {
                 s.pop();
                 result.push_back(cur->val);
-            }
-            for (auto it = std::rbegin(cur->children);
-                 it != std::rend(cur->children); it++) {
-                s.push(*it);
+                last = cur;
+            } else {
+                for (auto it = std::rbegin(cur->children);
+                     it != std::rend(cur->children); it++) {
+                    s.push(*it);
+                }
             }
         }
         return result;
@@ -48,6 +52,13 @@ public:
         for (auto n : root->children) {
             preorder(n, result);
         }
+    }
+
+    void postorder(Node* root, std::vector<int>& result) {
+        for (auto n : root->children) {
+            postorder(n, result);
+        }
+        result.push_back(root->val);
     }
 };
 
@@ -61,7 +72,7 @@ int main() {
 
     std::ostream_iterator<int> out(std::cout, " ");
     Solution sol;
-    auto vi = sol.preorder(root);
+    auto vi = sol.postorder(root);
     std::copy(vi.begin(), vi.end(), out);
     std::cout << std::endl;
     return 0;
