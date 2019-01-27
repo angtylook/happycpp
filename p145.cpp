@@ -15,15 +15,10 @@ class Solution {
 public:
     std::vector<int> postorderTraversal(TreeNode* root) {
         std::vector<int> result;
-        if (!root)
-            return result;
         std::stack<TreeNode*> s;
-        s.push(root);
         TreeNode* last{nullptr};
-        while (!s.empty()) {
-            root = s.top();
-            s.pop();
-            if (root != nullptr) {
+        while (root != nullptr || !s.empty()) {
+            while (root != nullptr) {
                 if (last == nullptr || root->right != last) {
                     s.push(root);
                 }
@@ -32,15 +27,14 @@ public:
                 } else {
                     root = root->right;
                 }
+            }
+            root = s.top();
+            if (root->right != nullptr) {
+                root = root->right;
             } else {
-                root = s.top();
-                if (root->right != nullptr) {
-                    root = root->right;
-                } else {
-                    last = root;
-                    result.push_back(root->val);
-                    s.pop();
-                }
+                last = root;
+                result.push_back(root->val);
+                s.pop();
             }
         }
         return result;
