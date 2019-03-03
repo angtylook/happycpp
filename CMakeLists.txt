@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.13)
 project(leetcode CXX)
 
-set(CMAKE_C_COMPILER "/usr/local/bin/gcc-8")
-set(CMAKE_CXX_COMPILER "/usr/local/bin/g++-8")
+#set(CMAKE_C_COMPILER "/usr/local/bin/gcc-8")
+#set(CMAKE_CXX_COMPILER "/usr/local/bin/g++-8")
 set(CMAKE_CXX_FLAGS "-fsanitize=address")
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -45,6 +45,7 @@ add_executable(p867 p867.cpp base/util.h)
 add_executable(p872 p872.cpp base/util.h)
 add_executable(p876 p876.cpp base/util.h)
 add_executable(p883 p883.cpp)
+add_executable(p893 p893.cpp base/util.h)
 add_executable(p897 p897.cpp base/util.h)
 add_executable(p905 p905.cpp)
 add_executable(p908 p908.cpp)
