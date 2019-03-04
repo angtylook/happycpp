@@ -10,8 +10,7 @@ template <typename T>
 std::ostream& operator<<(std::ostream& out, const std::vector<T>& v) {
     out << "[";
     std::ostream_iterator<T> out_iter(out, ", ");
-    std::copy(v.begin(), --v.end(), out_iter);
-    out << v.back();
+    std::copy(v.begin(), v.end(), out_iter);
     out << "]";
     return out;
 }
