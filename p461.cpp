@@ -14,7 +14,7 @@ public:
 int main() {
     Solution sol;
     assert(sol.hammingDistance(1, 4) == 2);
-    assert(__builtin_popcount(93 ^ 73) == 2);
+    // assert(__builtin_popcount(93 ^ 73) == 2);
     assert(sol.hammingDistance(93, 73) == 2);
     return 0;
 }
