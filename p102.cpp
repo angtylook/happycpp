@@ -10,7 +10,10 @@ struct TreeNode {
 
 class Solution {
 public:
-    std::vector<std::vector<int>> levelOrder(TreeNode* root) {}
+    std::vector<std::vector<int>> levelOrder(TreeNode* root) {
+        std::vector<std::vector<int>> r;
+        return r;
+    }
 };
 
 int main() {}
