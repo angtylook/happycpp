@@ -1,4 +1,5 @@
 #include <iostream>
+#include <list>
 #include <queue>
 
 #include "base/util.h"
@@ -12,15 +13,19 @@ std::string toStr(TreeNode* n) {
 };
 
 void printTree(TreeNode* root, std::string& s) {
-    std::queue<TreeNode*> q;
-    q.push(root);
+    std::list<TreeNode*> q;
+    q.push_back(root);
     while (!q.empty()) {
         auto node = q.front();
-        q.pop();
+        q.pop_front();
         s.append(toStr(node)).append(",");
         if (node) {
-            q.push(node->left);
-            q.push(node->right);
+            q.push_back(node->left);
+            q.push_back(node->right);
+        }
+        if (std::all_of(q.begin(), q.end(),
+                        [](TreeNode* n) { return n == nullptr; })) {
+            break;
         }
     }
 }
@@ -36,7 +41,7 @@ TreeNode* createTree(const std::vector<std::string>& inorder) {
     auto root = new TreeNode(std::stoi(inorder[0]));
     q.push(root);
     size_t index = 1;
-    while (!q.empty()) {
+    while (!q.empty() && index < inorder.size()) {
         auto node = q.front();
         q.pop();
         if (inorder[index] != "null") {
@@ -44,6 +49,8 @@ TreeNode* createTree(const std::vector<std::string>& inorder) {
             q.push(node->left);
         }
         index++;
+        if (index >= inorder.size())
+            break;
         if (inorder[index] != "null") {
             node->right = new TreeNode(std::stoi(inorder[index]));
             q.push(node->right);
