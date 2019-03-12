@@ -6,6 +6,15 @@ public:
     std::vector<int> nextGreaterElement(std::vector<int>& findNums,
                                         std::vector<int>& nums) {
         std::vector<int> vi;
+        for (auto n : findNums) {
+            auto iter = std::find_if(std::find(nums.begin(), nums.end(), n),
+                                     nums.end(), [n](int v) { return v > n; });
+            if (iter != nums.end()) {
+                vi.push_back(*iter);
+            } else {
+                vi.push_back(-1);
+            }
+        }
         return vi;
     }
 };
