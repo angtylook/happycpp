@@ -10,6 +10,7 @@ set(CMAKE_CXX_STANDARD 17)
 include_directories(".")
 
 add_executable(p1 p1.cpp)
+add_executable(p10 p10.cpp)
 add_executable(p2 p2.cpp)
 add_executable(p3 p3.cpp)
 add_executable(p4 p4.cpp)
