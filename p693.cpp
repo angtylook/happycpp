@@ -4,15 +4,20 @@ class Solution {
 public:
     bool hasAlternatingBits(int n) {
         unsigned kMask = 0x80000000;
-        bool first = false;
+        int expected = -1;
         while (kMask != 0) {
             if ((kMask & unsigned(n)) > 0) {
-                if (!first)
-                    first = true;
-                else
+                if (expected != 1 && expected != -1) {
                     return false;
+                }
+                expected = 0;
             } else {
-                first = false;
+                if (expected != 0 && expected != -1) {
+                    return false;
+                }
+                if (expected == 0) {
+                    expected = 1;
+                }
             }
             kMask = kMask >> 1;
         }
