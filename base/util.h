@@ -28,4 +28,16 @@ TreeNode* createTree(const std::vector<std::string>& inorder);
 void print(TreeNode* root);
 void destory(TreeNode* root);
 
+// Definition for singly-linked list.
+struct ListNode {
+    int val;
+    ListNode* next;
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode* node) : val(x), next(node) {}
+};
+
+ListNode* create(const std::vector<int>& vals);
+void print(ListNode* head);
+void destroy(ListNode* head);
+
 #endif  // BASE_UTIL_H_

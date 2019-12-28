@@ -78,3 +78,33 @@ void destory(TreeNode* root) {
     destory(root->right);
     delete root;
 }
+
+ListNode* create(const std::vector<int>& vals) {
+    ListNode* head = nullptr;
+    for (auto it = vals.crbegin(); it != vals.crend(); it++) {
+        head = new ListNode(*it, head);
+    }
+    return head;
+}
+
+void print(ListNode* head) {
+    std::string out("[");
+    while (head != nullptr) {
+        out.append(std::to_string(head->val));
+        out.append(",");
+        head = head->next;
+    }
+    if (out.back() == ',') {
+        out.pop_back(); 
+    }
+    out.append("]");
+    std::cout << out << std::endl;
+}
+
+void destroy(ListNode* head) {
+    while (head != nullptr) {
+        auto to_delete = head;
+        head = head->next;
+        delete to_delete;
+    }
+}
