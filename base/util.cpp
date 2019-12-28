@@ -70,12 +70,12 @@ void print(TreeNode* root) {
     std::cout << s << std::endl;
 }
 
-void destory(TreeNode* root) {
+void destroy(TreeNode* root) {
     if (!root) {
         return;
     }
-    destory(root->left);
-    destory(root->right);
+    destroy(root->left);
+    destroy(root->right);
     delete root;
 }
 

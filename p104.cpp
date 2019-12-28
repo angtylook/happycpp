@@ -21,6 +21,6 @@ int main() {
         std::vector<std::string>{"3", "9", "20", "null", "null", "15", "7"});
     Solution sol;
     std::cout << sol.maxDepth(t1) << std::endl;
-    destory(t1);
+    destroy(t1);
     return 0;
 }

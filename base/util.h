@@ -26,7 +26,7 @@ struct TreeNode {
 TreeNode* createTree(const std::vector<std::string>& inorder);
 
 void print(TreeNode* root);
-void destory(TreeNode* root);
+void destroy(TreeNode* root);
 
 // Definition for singly-linked list.
 struct ListNode {
