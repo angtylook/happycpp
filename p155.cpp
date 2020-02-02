@@ -39,3 +39,7 @@ private:
  * int param_3 = obj->top();
  * int param_4 = obj->getMin();
  */
+
+int main() {
+    return 0;
+}
