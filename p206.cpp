@@ -28,7 +28,7 @@ public:
 };
 
 int main() {
-    auto head = create({1, 2, 3, 4, 5});
+    auto head = createList({1, 2, 3, 4, 5});
     print(head);
     Solution sol;
     head = sol.reverseList(head);

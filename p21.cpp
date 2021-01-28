@@ -52,8 +52,8 @@ public:
 };
 
 int main() {
-    auto l1 = create({1, 2, 4});
-    auto l2 = create({1, 3, 4});
+    auto l1 = createList({1, 2, 4});
+    auto l2 = createList({1, 3, 4});
     Solution sol;
     auto l = sol.mergeTwoLists(l1, l2);
     print(l);

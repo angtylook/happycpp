@@ -79,7 +79,7 @@ void destroy(TreeNode* root) {
     delete root;
 }
 
-ListNode* create(const std::vector<int>& vals) {
+ListNode* createList(const std::vector<int>& vals) {
     ListNode* head = nullptr;
     for (auto it = vals.crbegin(); it != vals.crend(); it++) {
         head = new ListNode(*it, head);
@@ -108,3 +108,26 @@ void destroy(ListNode* head) {
         delete to_delete;
     }
 }
+
+ListNode* concat(ListNode* list1, ListNode* list2) {
+    if (list1 == nullptr)
+        return list2;
+    
+    auto tail = list1;
+    while (tail->next != nullptr) {
+        tail = tail->next;
+    }
+    // assert(tail->next == nullptr)
+    tail->next = list2;
+    return list1;
+}
+
+size_t len(ListNode* list) {
+    size_t n = 0;
+    while (list) {
+        n++;
+        list = list->next;
+    }
+    return n;
+}
+

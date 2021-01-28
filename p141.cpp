@@ -1,4 +1,5 @@
 #include "base/util.h"
+#include <unordered_set>
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -9,7 +10,20 @@
  */
 class Solution {
 public:
-    bool hasCycle(ListNode* head) { return true; }
+    bool hasCycle(ListNode* head) {
+        std::unordered_set<ListNode*> exists;
+        while (head!=nullptr) {
+            if (head->next) {
+                if (exists.count(head->next) > 0) {
+                    return true;
+                } else {
+                    exists.insert(head->next);
+                }
+            }
+            head = head->next;
+        }
+        return false;
+    }
 };
 
 int main() {

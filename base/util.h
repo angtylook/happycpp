@@ -36,8 +36,10 @@ struct ListNode {
     ListNode(int x, ListNode* node) : val(x), next(node) {}
 };
 
-ListNode* create(const std::vector<int>& vals);
+ListNode* createList(const std::vector<int>& vals);
 void print(ListNode* head);
 void destroy(ListNode* head);
+ListNode* concat(ListNode* list1, ListNode* list2);
+size_t len(ListNode* list);
 
 #endif  // BASE_UTIL_H_
