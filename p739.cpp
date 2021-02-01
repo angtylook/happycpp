@@ -8,14 +8,26 @@
 class Solution {
 public:
     std::vector<int> dailyTemperatures(std::vector<int>& T) {
-        std::vector<int> ret;
-        for (size_t i = 0; i < T.size(); i++) {
-            ret.push_back(0);
-            for (size_t j = i + 1; j < T.size(); j++) {
-                if (T[j] > T[i]) {
-                    ret.back() = j - i;
-                    break;
+        constexpr int minT = 30;
+        constexpr int maxT = 100;
+
+        std::vector<int> ret(T.size(), 0);
+        std::vector<int> bookmarks(maxT - minT + 1, 0);
+
+        for (size_t i = T.size();  i > 0; i--) {
+            auto p = i - 1;
+            bookmarks[T[p] - minT] = p;
+            std::cout << "set " << T[p] << " at " << p << std::endl;
+
+            int idx = T.size();
+            for (int t = T[p]+1; t <= maxT; t++) {
+                auto bm = bookmarks[t - minT];
+                if (bm != 0 && idx > bm) {
+                    idx = bm;
                 }
+            }
+            if (idx != T.size()) {
+                ret[p] = idx - p;
             }
         }
         return ret;
