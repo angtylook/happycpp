@@ -23,13 +23,28 @@ public:
             return max_area;
     };
 
-    int maxArea(std::vector<int>& height) {
+    int maxAreaOne(std::vector<int>& height) {
         int max_area = 0;
         for (size_t i = 0; i < height.size()-1; i++) {
             auto area = maxAreaIdx(height, i);
             if (max_area < area) {
                 max_area = area;
             }
+        }
+        return max_area;
+    }
+
+    int maxArea(std::vector<int>& height) {
+        int max_area = 0;
+        size_t i = 0;
+        size_t j = height.size() - 1;
+        while (i < j) {
+            auto ge = height[i] >= height[j];
+            auto area =  ge ? height[j] * (j - i) : height[i] *(j-i);
+            if (area > max_area) {
+                max_area = area;
+            }
+            ge ? j-- : i++;
         }
         return max_area;
     }
