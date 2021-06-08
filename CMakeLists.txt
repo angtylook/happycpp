@@ -1,8 +1,8 @@
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.18)
 project(leetcode CXX)
 
-#set(CMAKE_C_COMPILER "/usr/local/bin/gcc-8")
-#set(CMAKE_CXX_COMPILER "/usr/local/bin/g++-8")
+#set(CMAKE_C_COMPILER "/usr/local/bin/gcc-9")
+#set(CMAKE_CXX_COMPILER "/usr/local/bin/g++-9")
 #set(CMAKE_CXX_FLAGS "-fsanitize=address")
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)

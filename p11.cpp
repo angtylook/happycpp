@@ -34,7 +34,7 @@ public:
         return max_area;
     }
 
-    int maxArea(std::vector<int>& height) {
+    int maxArea(const std::vector<int>& height) {
         int max_area = 0;
         size_t i = 0;
         size_t j = height.size() - 1;
