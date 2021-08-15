@@ -4,6 +4,16 @@
 class Solution {
 public:
     bool isMatch(std::string s, std::string p) {
+        std::string p1;
+        for (auto c : p) {
+            if (p1.empty() || c != '*' || p1.back() != '*') {
+                p1.push_back(c);
+            }
+        }
+        return isMatchSV(s, p1);
+    }
+
+    bool isMatchSV(std::string_view s, std::string_view p) {
         if (s.empty()) {
             return p.empty() || p == "*";
         }
@@ -11,7 +21,16 @@ public:
             return s.empty();
         }
         // assert(!s.empty() && !p.empty())
-        return true;
+        bool first_match = s[0] == p[0] || p[0] == '?' || p[0] == '*';
+        if (s[0] == p[0] || p[0] == '?') {
+            return isMatchSV(s.substr(1), p.substr(1));
+        }
+        if (p[0] == '*') {
+            return isMatchSV(s.substr(1), p.substr(1)) ||
+                   isMatchSV(s, p.substr(1)) || isMatchSV(s.substr(1), p);
+        }
+
+        return first_match;
     }
 };
 
