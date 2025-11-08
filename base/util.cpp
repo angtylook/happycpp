@@ -131,3 +131,18 @@ size_t len(ListNode* list) {
     return n;
 }
 
+ScopedTimer::ScopedTimer(std::string msg)
+    :msg_(msg)
+    ,start_(std::chrono::steady_clock::now()) {
+}
+
+ScopedTimer::~ScopedTimer() {
+    auto end = std::chrono::steady_clock::now();
+    auto dura = end - start_;
+    auto micro_seconds =
+        std::chrono::duration_cast<std::chrono::microseconds>(dura).count();
+    std::cout << msg_ << " " << micro_seconds / 1000 << "."
+              << micro_seconds % 1000
+              << "ms" << std::endl;
+}
+

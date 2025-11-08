@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 // return index in arr, where [start, index) less than num
 // [index, end) great or equal num.
@@ -18,5 +19,9 @@ size_t part(const std::vector<int>& arr, size_t start, size_t end, int num)
 
 int main(int argc, const char* argv[])
 {
+    std::vector<int> ints;
+    if (auto it = std::find(ints.begin(), ints.end(), 1);  it != ints.end()) {
+    }
     return 0;
 }
+

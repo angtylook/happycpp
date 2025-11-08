@@ -5,6 +5,7 @@
 #include <iterator>
 #include <string>
 #include <vector>
+#include <chrono>
 
 template <typename T>
 std::ostream& operator<<(std::ostream& out, const std::vector<T>& v) {
@@ -44,5 +45,15 @@ void print(ListNode* head);
 void destroy(ListNode* head);
 ListNode* concat(ListNode* list1, ListNode* list2);
 size_t len(ListNode* list);
+
+class ScopedTimer {
+public:
+    explicit ScopedTimer(std::string msg = "");
+    ~ScopedTimer();
+
+private:
+    std::string msg_;
+    std::chrono::steady_clock::time_point start_;
+};
 
 #endif  // BASE_UTIL_H_
